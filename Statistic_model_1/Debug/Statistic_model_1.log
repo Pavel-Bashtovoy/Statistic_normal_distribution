@@ -1,0 +1,10 @@
+﻿  Source.cpp
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(23,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(33,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(43,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(61,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(72,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(75,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(84,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(87,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Statistic_model_1.vcxproj -> C:\Users\Павел\source\repos\Statistic_model_1\Debug\Statistic_model_1.exe
