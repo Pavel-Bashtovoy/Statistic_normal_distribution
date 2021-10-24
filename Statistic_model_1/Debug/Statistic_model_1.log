@@ -1,10 +1,19 @@
 ﻿  Source.cpp
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(23,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(33,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(43,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(61,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(72,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(75,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(84,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(87,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(12,31): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(28,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(38,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(48,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(66,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(77,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(80,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(89,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(92,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(139,42): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(140,42): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(152,50): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(160,50): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(180,44): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(181,44): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(193,52): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\Павел\source\repos\Statistic_model_1\Statistic_model_1\Source.cpp(201,52): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
   Statistic_model_1.vcxproj -> C:\Users\Павел\source\repos\Statistic_model_1\Debug\Statistic_model_1.exe

@@ -19,4 +19,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="OMP.txt">
+      <Filter>Файлы заголовков</Filter>
+    </Text>
+    <Text Include="ORO.txt">
+      <Filter>Файлы заголовков</Filter>
+    </Text>
+    <Text Include="DistributionDensity.txt">
+      <Filter>Файлы заголовков</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
