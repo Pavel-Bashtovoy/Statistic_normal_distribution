@@ -6,24 +6,25 @@
 #include <algorithm>
 using namespace std;
 const double PI = 3.141592653589793238463;
-const int N = 200;
-const float lambda = 2.5;
-//const float tetta = 0.0;
-const float tetta = 1.12002101;
+const int N = 500;
+const double lambda = 1.0;
+const double tetta = 3.07528535261;
+const double epsilon = 0.3;
+//const double tetta = 2.991;
 
-const float delta = 1.0; // 0,1 0,5 1
-const double eps = 1.E-3;
+const double delta = 0.1;//0,1 0,5 1
+const double eps = 1.E-4;
 
 
 //U  равномерно распределенные на отрезке
-float randomRangeU(float min, float max) {
-   return min + rand() / (float)RAND_MAX * (max - min);
+double randomRangeU(double min, double max) {
+   return min + rand() / (double)RAND_MAX * (max - min);
 }
 
 //плотность распределения
-float DistributionDensity(float x) {
+double DistributionDensity(double x) {
 
-    float f;
+    double f;
 
     f = (1 / sqrt(2 * PI)) * exp((- x * x) / 2);
 
@@ -31,9 +32,9 @@ float DistributionDensity(float x) {
 }
 
 //производная плотности распределения 
-float DistributionDensityDerivative(float x) {
+double DistributionDensityDerivative(double x) {
 
-    float f;
+    double f;
 
     f = -x * sqrt(2) * (1 /(2 * sqrt( PI))) * exp((-x * x) / 2);
 
@@ -41,40 +42,46 @@ float DistributionDensityDerivative(float x) {
 }
 
 //Генерация случайной величины
-float GeneratingRandomVariable(float u1, float u2) {
+double GeneratingRandomVariable(double u1, double u2) {
 
-    float x;
+    double x;
 
-    x = sqrt(-2 * log(u1)) * cos(2 * PI * u2);
+    x = sqrt(-2.0 * log(u1)) * cos(2.0 * PI * u2);
+    if (x > 3.7) {
+        return 3.04;
+    } else if (x < -3.7) {
+        return -3.04;
+    } else {
 
-    return x;
+        return x;  
+    }
 }
 
 //выборочная медиана;
-float median(std::vector<float> &y) {
+double median(std::vector<double> &y) {
 
     auto m = y.begin() + y.size() / 2;
     std::nth_element(y.begin(), m, y.end());
-    return y[y.size() / 2];
+    return *m;
 }
 //выборочная дисперсия
-float dispersion(float  yArithmeticMean, std::vector<float>& y) {
-    float D;
-    float sum = 0.0;
+double dispersion(double  yArithmeticMean, std::vector<double>& y) {
+    double D;
+    double sum = 0.0;
 
     for (int i = 0; i < N;i++) {
-        sum = pow((y[i] - yArithmeticMean), 2);
+        sum += pow((y[i] - yArithmeticMean), 2);
     }
 
     D = sum / N;
     return D;
  }
 //коэффициентов асимметрии 
-float betta_3(float  yArithmeticMean, float D, std::vector<float>& y){
-    float sum = 0.0, betta;
+double betta_3(double  yArithmeticMean, double D, std::vector<double>& y){
+    double sum = 0.0, betta;
 
     for (int i = 0; i < N;i++) {
-        sum = pow((y[i] - yArithmeticMean),3);
+        sum += pow((y[i] - yArithmeticMean),3);
     }
 
     betta = sum / (N * sqrt(pow(D, 3)));
@@ -82,11 +89,11 @@ float betta_3(float  yArithmeticMean, float D, std::vector<float>& y){
     return betta;
 }
  //эксцесса
-float betta_4(float  yArithmeticMean, float D, std::vector<float>& y) {
-    float sum = 0.0, betta;
+double betta_4(double  yArithmeticMean, double D, std::vector<double>& y) {
+    double sum = 0.0, betta;
 
     for (int i = 0; i < N;i++) {
-        sum = pow((y[i] - yArithmeticMean), 4);
+        sum += pow((y[i] - yArithmeticMean), 4);
     }
 
     betta = sum / (N * pow(D, 2));
@@ -95,8 +102,8 @@ float betta_4(float  yArithmeticMean, float D, std::vector<float>& y) {
 }
 
 //оценка максимального правдоподобия;
-float lossMaximumLikelihoodEstimation (float y) {
-    float lossFunction = 0;
+double lossMaximumLikelihoodEstimation (double y) {
+    double lossFunction = 0;
 
     lossFunction = - log(DistributionDensity((y - tetta) / lambda));
   
@@ -104,8 +111,8 @@ float lossMaximumLikelihoodEstimation (float y) {
 }
 //обобщенные радикальные оценки с разными значениями параметра(как минимум три обязательных значения 0.1, 0.5, 1).
 //  функция потерь 
-float lossGeneralizedRadicalAssessments( float y ) {
-    float lossFunction = 0;
+double lossGeneralizedRadicalAssessments( double y ) {
+    double lossFunction = 0;
 
     lossFunction = (- 1 / pow( DistributionDensity(0) , delta)) * pow( DistributionDensity((y - tetta) / lambda), delta);
 
@@ -113,9 +120,9 @@ float lossGeneralizedRadicalAssessments( float y ) {
 }
 
 //Оценочная функция 
-float evaluationFunction(float y) {
-    float evaluation = 0;
-    float c = 1;
+double evaluationFunction(double y) {
+    double evaluation = 0;
+    double c = 1;
 
     evaluation = c * DistributionDensityDerivative( (y - tetta) / lambda ) * pow( DistributionDensity((y - tetta) / lambda), delta - 1 );
 
@@ -208,27 +215,10 @@ void golden_ratio_for_ORO(double a, double b, double eps, ofstream& out)
     }
 }
 
-int main()
-{
-    float min = 0.0;
-    float max = 1.0;
-    float sum_y = 0;
-    float yArithmeticMean, M, D, b_3 , b_4;
-    vector<float> u1;
-    vector<float> u2;
-    vector<float> x;
-    vector<float> y;
+vector<double> xRandom (std::vector<double>& u1, std::vector<double>& u2 , double min, double max) {
 
-    ofstream fout;
-
-
-
-    u1.resize(N);
-    u2.resize(N);
+    vector<double> x;
     x.resize(N);
-    y.resize(N);
-
-    setlocale(LC_ALL, "Russian");
 
     //Получение U1  и U2
     for (int i = 0; i < N; i++)
@@ -236,6 +226,7 @@ int main()
         u1[i] = randomRangeU(min, max);
         u2[i] = randomRangeU(min, max);
         std::cout << i << '|' << u1[i] << '|' << u2[i] << endl;
+
     }
 
     // Найдем случайную величину х
@@ -244,20 +235,61 @@ int main()
         x[i] = GeneratingRandomVariable(u1[i], u2[i]);
     }
 
+    return  x;
+}
+
+int main()
+{
+    double min = 0.0;
+    double max = 1.0;
+    double sum_y = 0;
+    double yArithmeticMean, M, D, b_3 , b_4;
+    vector<double> u1;
+    vector<double> u2;
+    u1.resize(N);
+    u2.resize(N);
+
+    vector<double> x;
+    x.resize(N);
+    x = xRandom(u1, u2, min, max);
+    vector<double> y;
+
+    ofstream fout;
+
+
+
+
+    y.resize(N);
+
+    setlocale(LC_ALL, "Russian");
+
+
     //Найдем случайную величину y  и y`- среднее y , найдем значения функции плотности
     fout.open("DistributionDensity.txt");
-    std::cout << "Найдем y:" << endl;
-    std::cout << 'i' << '|' << "Y[i]    " << '|' << "Func" << endl;
-    fout << "Y[i]    " << '|' << "Func" << endl;
+
+    double a = -7, b = 3.7;
+    double step = (b - a) / N;
+    double point = 0;
+    //std::cout << "Найдем y:" << endl;
+   // std::cout << 'i' << '|' << "Y[i]    " << '|' << "Func" << endl;
+    fout << "i    " << '|' << "y(i)" << endl;
 
     for (int i = 0; i < N; i++)
     {
         y[i] = x[i] * lambda + tetta;
-        std::cout << i << '|' << y[i] <<'|'<< DistributionDensity(y[i]) << endl;
-
-        fout << y[i] << ','<< DistributionDensity(y[i]) << endl;
 
         sum_y += y[i];
+
+      // std::cout << i << '|' << y[i] <<'|'<< DistributionDensity(y[i]) << endl;
+
+        //fout << y[i] << ','<< DistributionDensity(y[i]) << endl;
+      // fout <<i<<'|'<< y[i]  << endl;
+       point =a + i * step;
+     //  point = point * lambda + tetta;
+       
+      fout << point << ',' << DistributionDensity(point + tetta) << endl;
+
+
     }
     fout.close();
 
